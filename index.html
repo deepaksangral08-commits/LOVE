@@ -2,163 +2,184 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hemu ❤️ My Valentine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Hemu ❤️</title>
 
 <style>
+* {
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(#ff9a9e, #fad0c4);
-    overflow-x: hidden;
+    overflow: hidden;
+    background: #000;
+}
+
+.slide {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
     text-align: center;
-    color: #4a0c2e;
+    color: white;
 }
 
-h1 { font-size: 3rem; margin-top: 40px; }
-h2 { font-weight: normal; }
-
-.section { padding: 40px 20px; }
-
-.photos img {
-    width: 240px;
-    border-radius: 20px;
-    margin: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
-.letter {
-    max-width: 800px;
-    margin: auto;
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    font-size: 1.1rem;
-    line-height: 1.8;
+.active {
+    display: flex;
 }
 
 button {
-    font-size: 20px;
-    padding: 12px 30px;
+    padding: 14px 28px;
     border-radius: 30px;
     border: none;
-    cursor: pointer;
-    margin: 15px;
+    font-size: 18px;
+    margin: 10px;
+}
+
+.next {
+    background: white;
+    color: black;
 }
 
 #yesBtn {
-    background: #ff3366;
+    background: #ff4b5c;
     color: white;
 }
 
 #noBtn {
-    background: #eee;
     position: absolute;
+    background: #eee;
 }
 
-#finalScreen {
-    display: none;
+img {
+    width: 45%;
+    margin: 5px;
+    border-radius: 15px;
+}
+
+/* Confetti */
+.confetti {
     position: fixed;
-    inset: 0;
-    background: linear-gradient(#ff758c, #ff7eb3);
-    color: white;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    font-size: 2rem;
-    z-index: 999;
+    width: 8px;
+    height: 8px;
+    background: red;
+    animation: fall 3s linear infinite;
+}
+@keyframes fall {
+    from { transform: translateY(-10px); }
+    to { transform: translateY(100vh); }
 }
 
+/* Firework hearts */
 .heart {
     position: fixed;
-    bottom: -20px;
-    font-size: 24px;
-    animation: floatUp 6s linear infinite;
+    font-size: 22px;
+    animation: rise 4s linear;
 }
-
-@keyframes floatUp {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-100vh); opacity: 0; }
+@keyframes rise {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-700px); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
-<iframe width="0" height="0"
-src="https://www.youtube.com/embed/3kJ_9iRZ0Kk?autoplay=1&loop=1&playlist=3kJ_9iRZ0Kk"
-allow="autoplay"></iframe>
-
-<h1>Hey Hemu ❤️</h1>
-<h2>This is not a website… this is my heart</h2>
-
-<!-- PHOTOS -->
-<div class="section photos">
-    <img src="hemu1.jpg">
-    <img src="hemu2.jpg">
-    <img src="hemu3.jpg">
+<!-- SLIDE 1 : POEM -->
+<div class="slide active" id="slide1" style="background: linear-gradient(#ff758c,#ff7eb3);">
+<h2>Hemu ❤️</h2>
+<p>
+Aap muskuraati ho toh duniya ruk jaati hai,<br>
+Aap saath hoti ho toh har kami mit jaati hai.<br><br>
+Yeh sirf alfaaz nahi,<br>
+Yeh woh ehsaas hai jo sirf aapke liye hai.
+</p>
+<button class="next" onclick="nextSlide()">Next ➜</button>
 </div>
 
-<!-- LETTER -->
-<div class="section letter">
-<p>
-Hemu, tumhari presence meri life ko loud nahi,
-<b>soft aur safe</b> banati hai.
-</p>
-
-<p>
-Tumhari hasi ek habit ban chuki hai,
-aur tumse baat na ho toh din adhoora lagta hai.
-</p>
-
-<p>
-Main perfect nahi hoon,
-par jo bhi hoon, <b>tumhara hoon</b>.
-</p>
-
-<p>
-Shayad isi ko kehte hain love…  
-<b>they call this love ❤️</b>
-</p>
+<!-- SLIDE 2 : PHOTO COLLAGE -->
+<div class="slide" id="slide2" style="background: linear-gradient(#141E30,#243B55);">
+<h2>Us Moments 💕</h2>
+<div>
+<img src="hemu1.jpg">
+<img src="hemu2.jpg"><br>
+<img src="hemu3.jpg">
+</div>
+<button class="next" onclick="nextSlide()">Next ➜</button>
 </div>
 
-<!-- PROPOSAL -->
-<div class="section">
-<h2>So ek last sawaal… 💌</h2>
-<button id="yesBtn" onclick="yesClicked()">Yes 💖</button>
-<button id="noBtn" onmouseover="moveNo()">No 🙈</button>
+<!-- SLIDE 3 : PROPOSAL -->
+<div class="slide" id="slide3" style="background: linear-gradient(#ff512f,#dd2476);">
+<h2>Hemu ❤️</h2>
+<h3>Will you be my Valentine?</h3>
+<button id="yesBtn">Yes 💖</button>
+<button id="noBtn">No 😜</button>
 </div>
 
-<!-- FINAL SCREEN -->
-<div id="finalScreen">
-<h1>Yayyy Hemu ❤️</h1>
+<!-- SLIDE 4 : EMOTIONAL END -->
+<div class="slide" id="slide4" style="background: black;">
+<h2>🥹❤️</h2>
 <p>
-You just made me the happiest person.  
-Happy Valentine’s Day 💕
+Mujhe aapse sirf pyaar nahi hai,<br>
+Mujhe aapki aadat lag chuki hai.<br><br>
+Aap meri zindagi ka woh hissa ho,<br>
+Jiske bina sab adhura lagta hai.
 </p>
 </div>
 
 <script>
-function moveNo() {
-    const btn = document.getElementById("noBtn");
-    btn.style.left = Math.random() * 80 + "vw";
-    btn.style.top = Math.random() * 80 + "vh";
+let current = 1;
+function nextSlide() {
+    document.getElementById("slide"+current).classList.remove("active");
+    current++;
+    document.getElementById("slide"+current).classList.add("active");
 }
 
-function yesClicked() {
-    document.getElementById("finalScreen").style.display = "flex";
-    startHearts();
+/* No button escape */
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("touchstart", moveBtn);
+noBtn.addEventListener("mouseover", moveBtn);
+function moveBtn() {
+    noBtn.style.left = Math.random()*80+"%";
+    noBtn.style.top = Math.random()*80+"%";
 }
 
-function startHearts() {
-    setInterval(() => {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "💖";
-        heart.style.left = Math.random() * 100 + "vw";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 6000);
-    }, 300);
+/* Yes click magic */
+document.getElementById("yesBtn").onclick = () => {
+    document.getElementById("slide3").classList.remove("active");
+    document.getElementById("slide4").classList.add("active");
+    confetti();
+    fireworks();
+};
+
+/* Confetti */
+function confetti() {
+    for(let i=0;i<50;i++){
+        let c=document.createElement("div");
+        c.className="confetti";
+        c.style.left=Math.random()*100+"vw";
+        c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+        document.body.appendChild(c);
+        setTimeout(()=>c.remove(),3000);
+    }
+}
+
+/* Firework hearts */
+function fireworks() {
+    setInterval(()=>{
+        let h=document.createElement("div");
+        h.className="heart";
+        h.innerHTML="💖";
+        h.style.left=Math.random()*100+"vw";
+        h.style.bottom="0";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),4000);
+    },300);
 }
 </script>
 
