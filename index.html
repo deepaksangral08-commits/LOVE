@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hemu ❤️ My Valentine</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(#ff9a9e, #fad0c4);
+    overflow-x: hidden;
+    text-align: center;
+    color: #4a0c2e;
+}
+
+h1 { font-size: 3rem; margin-top: 40px; }
+h2 { font-weight: normal; }
+
+.section { padding: 40px 20px; }
+
+.photos img {
+    width: 240px;
+    border-radius: 20px;
+    margin: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.letter {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+button {
+    font-size: 20px;
+    padding: 12px 30px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    margin: 15px;
+}
+
+#yesBtn {
+    background: #ff3366;
+    color: white;
+}
+
+#noBtn {
+    background: #eee;
+    position: absolute;
+}
+
+#finalScreen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(#ff758c, #ff7eb3);
+    color: white;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 2rem;
+    z-index: 999;
+}
+
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/3kJ_9iRZ0Kk?autoplay=1&loop=1&playlist=3kJ_9iRZ0Kk"
+allow="autoplay"></iframe>
+
+<h1>Hey Hemu ❤️</h1>
+<h2>This is not a website… this is my heart</h2>
+
+<!-- PHOTOS -->
+<div class="section photos">
+    <img src="hemu1.jpg">
+    <img src="hemu2.jpg">
+    <img src="hemu3.jpg">
+</div>
+
+<!-- LETTER -->
+<div class="section letter">
+<p>
+Hemu, tumhari presence meri life ko loud nahi,
+<b>soft aur safe</b> banati hai.
+</p>
+
+<p>
+Tumhari hasi ek habit ban chuki hai,
+aur tumse baat na ho toh din adhoora lagta hai.
+</p>
+
+<p>
+Main perfect nahi hoon,
+par jo bhi hoon, <b>tumhara hoon</b>.
+</p>
+
+<p>
+Shayad isi ko kehte hain love…  
+<b>they call this love ❤️</b>
+</p>
+</div>
+
+<!-- PROPOSAL -->
+<div class="section">
+<h2>So ek last sawaal… 💌</h2>
+<button id="yesBtn" onclick="yesClicked()">Yes 💖</button>
+<button id="noBtn" onmouseover="moveNo()">No 🙈</button>
+</div>
+
+<!-- FINAL SCREEN -->
+<div id="finalScreen">
+<h1>Yayyy Hemu ❤️</h1>
+<p>
+You just made me the happiest person.  
+Happy Valentine’s Day 💕
+</p>
+</div>
+
+<script>
+function moveNo() {
+    const btn = document.getElementById("noBtn");
+    btn.style.left = Math.random() * 80 + "vw";
+    btn.style.top = Math.random() * 80 + "vh";
+}
+
+function yesClicked() {
+    document.getElementById("finalScreen").style.display = "flex";
+    startHearts();
+}
+
+function startHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+    }, 300);
+}
+</script>
+
+</body>
+</html>
