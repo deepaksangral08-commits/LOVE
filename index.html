@@ -24,7 +24,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 25px;
     text-align: center;
     color: white;
 }
@@ -34,11 +34,12 @@ body {
 }
 
 button {
-    padding: 14px 28px;
+    padding: 14px 30px;
     border-radius: 30px;
     border: none;
     font-size: 18px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .next {
@@ -49,6 +50,7 @@ button {
 #yesBtn {
     background: #ff4b5c;
     color: white;
+    font-size: 20px;
 }
 
 #noBtn {
@@ -57,8 +59,9 @@ button {
 }
 
 img {
-    width: 45%;
-    margin: 5px;
+    width: 80%;
+    max-width: 260px;
+    margin: 8px;
     border-radius: 15px;
 }
 
@@ -67,7 +70,6 @@ img {
     position: fixed;
     width: 8px;
     height: 8px;
-    background: red;
     animation: fall 3s linear infinite;
 }
 @keyframes fall {
@@ -75,61 +77,88 @@ img {
     to { transform: translateY(100vh); }
 }
 
-/* Firework hearts */
+/* Heart fireworks */
 .heart {
     position: fixed;
-    font-size: 22px;
+    font-size: 26px;
     animation: rise 4s linear;
 }
 @keyframes rise {
     from { transform: translateY(0); opacity: 1; }
     to { transform: translateY(-700px); opacity: 0; }
 }
+
+/* Typing text */
+#typedText {
+    max-width: 900px;
+    font-size: 18px;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+/* Final Love Animation */
+#loveText {
+    margin-top: 30px;
+    font-size: 42px;
+    font-weight: bold;
+    color: #ff4b5c;
+    opacity: 0;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff4b5c; }
+    to { text-shadow: 0 0 25px #ff9aa2; }
+}
 </style>
 </head>
 
 <body>
 
-<!-- SLIDE 1 : POEM -->
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SLIDE 1 -->
 <div class="slide active" id="slide1" style="background: linear-gradient(#ff758c,#ff7eb3);">
-<h2>Hemu ❤️</h2>
+<h2>Hemu ❤️🌸</h2>
 <p>
-Aap muskuraati ho toh duniya ruk jaati hai,<br>
-Aap saath hoti ho toh har kami mit jaati hai.<br><br>
-Yeh sirf alfaaz nahi,<br>
-Yeh woh ehsaas hai jo sirf aapke liye hai.
+Aap muskuraati ho toh duniya ruk jaati hai 😊,<br>
+Aap saath hoti ho toh har kami mit jaati hai 💫.<br><br>
+Yeh sirf alfaaz nahi ✨,<br>
+Yeh woh ehsaas hai jo sirf aapke liye hai 💖.
 </p>
+<p>💑🌹💞</p>
 <button class="next" onclick="nextSlide()">Next ➜</button>
 </div>
 
-<!-- SLIDE 2 : PHOTO COLLAGE -->
+<!-- SLIDE 2 -->
 <div class="slide" id="slide2" style="background: linear-gradient(#141E30,#243B55);">
-<h2>Us Moments 💕</h2>
+<h2>Our Little Moments 💕📸</h2>
+<p>Har tasveer ek kahaani hai… aur har kahaani mein aap ❤️</p>
 <div>
 <img src="hemu1.jpg">
-<img src="hemu2.jpg"><br>
+<img src="hemu2.jpg">
 <img src="hemu3.jpg">
 </div>
+<p>🫶✨🥰</p>
 <button class="next" onclick="nextSlide()">Next ➜</button>
 </div>
 
-<!-- SLIDE 3 : PROPOSAL -->
+<!-- SLIDE 3 -->
 <div class="slide" id="slide3" style="background: linear-gradient(#ff512f,#dd2476);">
-<h2>Hemu ❤️</h2>
-<h3>Will you be my Valentine?</h3>
-<button id="yesBtn">Yes 💖</button>
+<h2>Hemu ❤️🥹</h2>
+<h3>Will you be my Valentine? 💖🌹</h3>
+<button id="yesBtn">Yes 💕</button>
 <button id="noBtn">No 😜</button>
 </div>
 
-<!-- SLIDE 4 : EMOTIONAL END -->
-<div class="slide" id="slide4" style="background: black;">
-<h2>🥹❤️</h2>
-<p>
-Mujhe aapse sirf pyaar nahi hai,<br>
-Mujhe aapki aadat lag chuki hai.<br><br>
-Aap meri zindagi ka woh hissa ho,<br>
-Jiske bina sab adhura lagta hai.
-</p>
+<!-- SLIDE 4 -->
+<div class="slide" id="slide4" style="background: linear-gradient(#000,#1a1a1a);">
+<h2>My Heart, My Home ❤️🏡</h2>
+<p id="typedText"></p>
+<div id="loveText">I LOVE YOU HEMU 💖♾️</div>
 </div>
 
 <script>
@@ -142,24 +171,62 @@ function nextSlide() {
 
 /* No button escape */
 const noBtn = document.getElementById("noBtn");
-noBtn.addEventListener("touchstart", moveBtn);
+noBtn.style.top = "60%";
+noBtn.style.left = "55%";
 noBtn.addEventListener("mouseover", moveBtn);
+noBtn.addEventListener("touchstart", moveBtn);
 function moveBtn() {
-    noBtn.style.left = Math.random()*80+"%";
-    noBtn.style.top = Math.random()*80+"%";
+    noBtn.style.left = Math.random()*80 + "%";
+    noBtn.style.top = Math.random()*80 + "%";
 }
 
-/* Yes click magic */
+/* YES CLICK */
 document.getElementById("yesBtn").onclick = () => {
     document.getElementById("slide3").classList.remove("active");
     document.getElementById("slide4").classList.add("active");
+    document.getElementById("bgMusic").play();
     confetti();
     fireworks();
+    typeText();
 };
+
+/* Typing Effect */
+const text = `Hemu… 💖
+
+Aap sirf meri zindagi ka hissa nahi ho,
+aap meri zindagi ki wajah ho 🌸.
+Aapke saath har cheez thodi si aasaan lagti hai,
+har problem chhoti aur har khushi badi lagti hai ✨.
+
+Mujhe aap chahiye sirf achhe dinon mein nahi ☀️,
+mujhe aap chahiye un dinon mein bhi jab sab kuch mushkil lage 🌧️.
+Ups ho ya downs,
+hum ek doosre ka haath kabhi nahi chhodenge 🤝❤️.
+
+Chahe zindagi jitni bhi tough ho,
+chahe sapne poore hone mein waqt lage,
+mujhe yakeen hai hum dono saath honge toh
+hum apni life mein best zaroor karenge 💪🌈.
+
+Main aapse sirf pyaar nahi karta,
+main aapko apna future maanta hoon 💍.
+Aaj, kal aur hamesha…
+it’s you. Only you. Always you. 💞♾️`;
+
+let index = 0;
+function typeText() {
+    if (index < text.length) {
+        document.getElementById("typedText").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeText, 40);
+    } else {
+        document.getElementById("loveText").style.opacity = 1;
+    }
+}
 
 /* Confetti */
 function confetti() {
-    for(let i=0;i<50;i++){
+    for(let i=0;i<60;i++){
         let c=document.createElement("div");
         c.className="confetti";
         c.style.left=Math.random()*100+"vw";
